@@ -22,17 +22,16 @@ Prerequisites:
 * A recent version of Maven. At this time Ubuntu installs 3.0.5, which is rather
   old; you can download the latest version from [maven.apache.org](http://maven.apache.org/download.cgi).
 
-First, remove the `.git` directory from this working directory. It's not needed (you won't be checking
+Now for the manual steps to do in this directory:
+
+1. Remove the `.git` directory from this working directory. It's not needed (you won't be checking
 stuff back in), and sometimes Git gets confused when it has nested repositories. Since this is a
 destructive action, I want you to do it explicitly.
-
-Second, edit the file `settings.xml` to change the repository URL, and move it into `$HOME/.m2` (after
+2. Edit the file `settings.xml` to change the repository URL, and move it into `$HOME/.m2` (after
 backing-up any existing settings file that you might have!).
-
-Third, change the `distributionManagement` section of `Deployed-Project/pom.xml` to point to your own
+3. Change the `distributionManagement` section of `Deployed-Project/pom.xml` to point to your own
 bucket. Your releases will fail if you leave it pointing at mine.
-
-Finally, run the script `scripts/setup-projects.sh`, which moves the directory `Deployed-Project` to `/tmp`,
+4. Run the script `scripts/setup-projects.sh`, which moves the directory `Deployed-Project` to `/tmp`,
 turns it into a Git "remote" repository, and clones it back to the project directory. This is necessary
 for the Maven release plugin to work.
 
